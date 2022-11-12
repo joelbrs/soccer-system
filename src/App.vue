@@ -1,9 +1,22 @@
 <template>
   <div id="app">
-    
-    <router-view/>
+    <main>
+      <router-view></router-view>
+    </main>
   </div>
 </template>
+
+<script>
+import Home from '@/views/Home.vue'
+
+export default {
+  name: 'App',
+
+  components: {
+    Home
+  }
+}
+</script>
 
 <style>
 #app {
@@ -25,5 +38,11 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+img {
+  max-width: 100%;
+
+  width: 70px;
 }
 </style>
