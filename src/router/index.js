@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import TableLeague from '../components/leagues/Table.vue'
-import ListLeague from '../components/leagues/List.vue'
+import TableLeague from '../views/Table.vue'
 
 Vue.use(VueRouter)
 

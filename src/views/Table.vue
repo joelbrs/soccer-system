@@ -44,12 +44,6 @@ import LeagueStandings from '@/mixins/LeagueStandings'
 export default {
       name: 'TableLeague',
 
-      data() {
-        return {
-            click: false,
-        }
-      },
-  
       mixins: [LeagueStandings],
  
       created() {

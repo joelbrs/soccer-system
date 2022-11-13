@@ -2,21 +2,21 @@
   <section>
     <h1>Consultor de Ligas Futebolísicas</h1>
 
-    <SearchLeagues/>
+    <SelectLeagues/>
     <ListLeagues/>
     </section>
 </template>
 
 <script>
-import SearchLeagues from '@/components/leagues/Search.vue'
+import SelectLeagues from '@/components/leagues/Select.vue'
 import ListLeagues from '@/components/leagues/List.vue'
-import TableLeague from '@/components/leagues/Table.vue'
+import TableLeague from '@/views/Table.vue'
 
 export default {
     name: 'Home',
 
     components: {
-      SearchLeagues,
+      SelectLeagues,
       ListLeagues,
       TableLeague
     }

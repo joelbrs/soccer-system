@@ -1,19 +1,20 @@
+import { api } from "@/services";
+
 export default {
     
     data() {
         return {
             leagueStandings: null,
-            vasco: false,
         }
     },
 
     methods: {
         getStats(id) {
-            fetch(`https://api-football-standings.azharimm.dev/leagues/${id}/standings`)
-            .then(r => r.json())
+            api.get(`leagues/${id}/standings`)
             .then(r => {
-                this.leagueStandings = r.data.standings;
+                this.leagueStandings = r.data.data.standings;
             })
-        },
+        }
+        
     }
 }

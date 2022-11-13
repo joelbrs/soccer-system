@@ -1,10 +1,10 @@
 <template>
-    <h1>Search</h1>
+    <h1>Select</h1>
 </template>
 
 <script>
 export default {
-    name: 'SearchLeague'
+    name: 'SelectLeague'
 }
 </script>
 

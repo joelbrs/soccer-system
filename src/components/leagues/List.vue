@@ -16,34 +16,14 @@
 </template>
 
 <script>
-import TableLeague from '@/components/leagues/Table.vue'
 import LeagueStandings from '@/mixins/LeagueStandings'
+import Leagues from '@/mixins/Leagues'
+
 
 export default {
     name: 'ListLeagues',
 
-    mixins: [LeagueStandings],
-
-    data() {
-        return {
-            leagues: null,
-            click: false
-        }
-    },
-
-    components: {
-        TableLeague
-    },
-
-    methods: {
-        getLeagues() {
-            fetch(`https://api-football-standings.azharimm.dev/leagues`)
-            .then(r => r.json())
-            .then(r => {
-                this.leagues = r.data;
-            })
-        }
-    },
+    mixins: [LeagueStandings, Leagues],
 
     created() {
         this.getLeagues();
