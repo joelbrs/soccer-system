@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <section>
     <h1>Consultor de Ligas Futebolísicas</h1>
-    
+
     <SearchLeagues/>
     <ListLeagues/>
-  </div>
+    </section>
 </template>
 
 <script>
@@ -14,12 +14,6 @@ import TableLeague from '@/components/leagues/Table.vue'
 
 export default {
     name: 'Home',
-
-    data() {
-      return {
-
-      }
-    },
 
     components: {
       SearchLeagues,

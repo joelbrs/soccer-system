@@ -16,19 +16,11 @@ export default new VueRouter({
       name: 'home',
       component: Home
     },
-    {
-      path: ':league',
-      name: 'league',
-      component: ListLeague,
-      props: true,
-      children: [
-        {
-          path: '/table',
-          name: 'table',
-          component: TableLeague
-        }
-      ]
 
+    {
+      path: '/table/:league',
+      name: 'league',
+      component: TableLeague,
     }
   ]
 })

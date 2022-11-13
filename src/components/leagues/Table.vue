@@ -39,32 +39,23 @@
 </template>
   
 <script>
-  
-  export default {
+import LeagueStandings from '@/mixins/LeagueStandings'
+
+export default {
       name: 'TableLeague',
-  
+
       data() {
-          return {
-              leagueStandings: null,
-              vasco: false,
-              values: []
-          }
+        return {
+            click: false,
+        }
       },
   
-      methods: {
-          getStats(id) {
-              fetch(`https://api-football-standings.azharimm.dev/leagues/${id}/standings`)
-              .then(r => r.json())
-              .then(r => {
-                  this.leagueStandings = r.data.standings;
-              })
-          },
-      },
-  
+      mixins: [LeagueStandings],
+ 
       created() {
-          this.getStats('bra.1');
+        this.getStats(this.$route.params.league)
       }
-  }
+}
 </script>
   
 <style scoped>
@@ -127,7 +118,6 @@ td:nth-child(7){
 td:nth-child(9){
     background-color: rgb(230, 240, 220);
 }
-
 .container {
     display: flex;
     justify-content: center;
@@ -136,25 +126,20 @@ td:nth-child(9){
     max-width: 100%;
 
 }
-
 .top {
     font-size: 10px;
         
     padding: 12px 0;
 }
-
 .classification {
     text-align: left;
 }
-
 .ranking {
     padding-left: 0;
 
     color: #999;
 }
-
 .team-name {
-    border-right: .2px solid lightgrey;
 
     text-align: left;
     font-weight: normal;
@@ -166,10 +151,8 @@ td:nth-child(9){
     padding-left: 0px;
     margin-right: 70px;
 }
-
 .stats-points {
     font-weight: bold;
 }
-
 
 </style>

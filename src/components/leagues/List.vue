@@ -6,26 +6,34 @@
                 <img :src="league.logos.light" :alt="league.slug">
                 <p>{{league.abbr}}</p>
                 
-                <router-link :to='`/${league.abbr}/table`'><button class="select-league" :id="league.id">Select League</button></router-link>
+                <router-link :to='`/table/${league.id}`'>
+                    <button class="select-league" :id="league.id" @click="getStats(league.id)">Select League</button>
+                </router-link>
+                
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import getStats from '@/mixins/LeagueStandings.js'
+import TableLeague from '@/components/leagues/Table.vue'
+import LeagueStandings from '@/mixins/LeagueStandings'
 
 export default {
     name: 'ListLeagues',
 
+    mixins: [LeagueStandings],
+
     data() {
         return {
             leagues: null,
-            id: '',
+            click: false
         }
     },
 
-    mixings: [getStats],
+    components: {
+        TableLeague
+    },
 
     methods: {
         getLeagues() {
