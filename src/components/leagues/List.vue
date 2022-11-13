@@ -6,15 +6,14 @@
                 <img :src="league.logos.light" :alt="league.slug">
                 <p>{{league.abbr}}</p>
                 
-                <router-link to="/standing"><button class="select-league">Select League</button></router-link>
-                
+                <router-link :to='`/${league.abbr}/table`'><button class="select-league" :id="league.id">Select League</button></router-link>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import StandingLeague from '@/components/leagues/Standing.vue'
+import getStats from '@/mixins/LeagueStandings.js'
 
 export default {
     name: 'ListLeagues',
@@ -22,8 +21,11 @@ export default {
     data() {
         return {
             leagues: null,
+            id: '',
         }
     },
+
+    mixings: [getStats],
 
     methods: {
         getLeagues() {
@@ -33,10 +35,6 @@ export default {
                 this.leagues = r.data;
             })
         }
-    },
-
-    components: {
-        StandingLeague
     },
 
     created() {

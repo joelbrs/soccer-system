@@ -1,14 +1,16 @@
 <template>
   <div>
     <h1>Consultor de Ligas Futebolísicas</h1>
+    
     <SearchLeagues/>
     <ListLeagues/>
   </div>
 </template>
 
 <script>
-import SearchLeagues from '@/components/leagues/Search'
-import ListLeagues from '@/components/leagues/List'
+import SearchLeagues from '@/components/leagues/Search.vue'
+import ListLeagues from '@/components/leagues/List.vue'
+import TableLeague from '@/components/leagues/Table.vue'
 
 export default {
     name: 'Home',
@@ -21,7 +23,8 @@ export default {
 
     components: {
       SearchLeagues,
-      ListLeagues
+      ListLeagues,
+      TableLeague
     }
 }
 </script>
