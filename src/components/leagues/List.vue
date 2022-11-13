@@ -31,10 +31,6 @@ export default {
 
 <style scoped>
 
-* {
-    margin: 0;
-}
-
 h3, p, img, button {
     margin-bottom: 10px;
 }
@@ -85,7 +81,7 @@ a {
 .leagues-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 30px;
+    grid-gap: 50px;
 
     max-width: 1200px;
 
@@ -99,6 +95,7 @@ a {
     
     padding: 10px;
     width: 380px;
+    max-width: 1000px;
     height: 215px;
 }
 

@@ -92,6 +92,8 @@ table {
     margin-left: 50px;
     
     min-width: 853px;
+
+    animation: fadeIn .8s forwards;
 }
 
 th, td {
@@ -101,6 +103,8 @@ th, td {
     border-right: none;
 
     text-align: center;
+
+    animation: fadeIn .3s forwards;
 }
 
 th {
@@ -129,9 +133,11 @@ td:nth-child(9){
 }
 .container {
     display: flex;
-    align-items: center;
+    align-content: center;
 
-    max-width: 100%;
+    max-width: 1000px;
+
+    margin: 30px auto 0 auto;
 }
 .top {
     font-size: .7rem;
@@ -145,8 +151,6 @@ td:nth-child(9){
     padding-left: 0;
 }
 .team-name {
-
-    border-right: .1px solid lightgrey;
 
     text-align: left;
     font-weight: normal;
@@ -174,4 +178,15 @@ td:nth-child(9){
     color: gray;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate3d(50px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(15px, 0, 0);
+    }
+}
 </style>

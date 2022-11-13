@@ -1,23 +1,31 @@
 <template>
   <div id="app">
+    <Header/>
     <router-view class="container"></router-view>
   </div>
 </template>
 
 <script>
-import Home from '@/views/Home.vue'
+import Header from '@/components/visuals/Header.vue'
 
 export default {
   name: 'App',
 
   components: {
-    Home,
+    Header,
   }
 }
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
 
 #app {
   font-family: 'Noto Serif', Helvetica, Arial;
@@ -44,5 +52,12 @@ img {
   margin: 0 auto;
   padding: 20px
 }
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #2c3e50;
+}
+
 
 </style>
