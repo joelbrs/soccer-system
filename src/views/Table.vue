@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Tabela</h1>
+
         <div class="container">
             <table>
                 <thead>
@@ -20,8 +20,8 @@
                 <tbody> 
                     <tr v-for="(standing, index) in leagueStandings" :key="standing.id">
                         <div>
-                            <td class="ranking">{{(index + 1)}}</td>
-                            <td class="rows team-name"><strong>{{standing.team.name}}</strong></td>
+                            <td class="ranking" :class="(index < 4) ? 'g4' : '' || (leagueStandings[index + 4] == null) ? 'z4' : 'middle'">{{(index + 1)}}</td>
+                            <td class="rows team-name"><strong>{{standing.team.displayName}}</strong></td>
                         </div>         
                         <td class="rows stats-points">{{standing.stats[2].value}}</td>
                         <td class="rows stats-games-played">{{standing.stats[0].value}}</td>
@@ -31,6 +31,8 @@
                         <td class="rows stats-goals-for">{{standing.stats[4].value}}</td>
                         <td class="rows stats-goals-agains">{{standing.stats[5].value}}</td>
                         <td class="stats-point-diff">{{standing.stats[8].value}}</td>
+                        
+                        {{standing.length}}
                     </tr>
                 </tbody>
             </table>    
@@ -45,6 +47,26 @@ export default {
       name: 'TableLeague',
 
       mixins: [LeagueStandings],
+
+      data() {
+        return {
+            aux: ''
+        }
+      },
+
+      methods: {
+        find(index) {
+            if (index < 4) {
+                this.aux = 'g4'
+            }
+
+            if (index + 4 == undefined) {
+               this. aux = 'z4'
+            } 
+
+            console.log("VASCO")
+        }
+      },
  
       created() {
         this.getStats(this.$route.params.league)
@@ -59,13 +81,6 @@ export default {
     
     margin: 0px;
     padding: 0px;
-}
-
-h1 {
-    display: flex;
-    justify-content: start;
-
-    margin-left: 265px;
 }
 
 table {
@@ -94,46 +109,44 @@ th {
 }
 
 td {
-    padding: 12px;
+    padding: 15px;
 }
 
 td:nth-child(3){
-    background-color: rgb(230, 240, 220);
+    background-color: #f5f5f5;
 }
 
 td:nth-child(5){
-    background-color: rgb(230, 240, 220);
+    background-color: #f5f5f5;
 }
 
 td:nth-child(7){
-    background-color: rgb(230, 240, 220);
+    background-color: #f5f5f5;
 }
 
 td:nth-child(9){
-    background-color: rgb(230, 240, 220);
+    background-color: #f5f5f5;
 }
 .container {
     display: flex;
-    justify-content: center;
     align-items: center;
 
     max-width: 100%;
-
 }
 .top {
-    font-size: 10px;
+    font-size: .7rem;
         
-    padding: 12px 0;
+    padding: 14px 0;
 }
 .classification {
     text-align: left;
 }
 .ranking {
     padding-left: 0;
-
-    color: #999;
 }
 .team-name {
+
+    border-right: .1px solid lightgrey;
 
     text-align: left;
     font-weight: normal;
@@ -147,6 +160,18 @@ td:nth-child(9){
 }
 .stats-points {
     font-weight: bold;
+}
+
+.g4 {
+    color: blue;
+}
+
+.z4 {
+    color: red;
+}
+
+.middle {
+    color: gray;
 }
 
 </style>

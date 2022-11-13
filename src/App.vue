@@ -1,19 +1,16 @@
 <template>
   <div id="app">
-    <Header></Header>
     <router-view class="container"></router-view>
   </div>
 </template>
 
 <script>
 import Home from '@/views/Home.vue'
-import Header from '@/components/home/Header.vue'
 
 export default {
   name: 'App',
 
   components: {
-    Header,
     Home,
   }
 }
@@ -25,6 +22,8 @@ export default {
 #app {
   font-family: 'Noto Serif', Helvetica, Arial;
   color: #2c3e50;
+
+  background: url('./assets/pattern.svg');
 
   margin: 0px;
 }

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Leagues from '@/mixins/Leagues'
+import Leagues from '@/mixins/Leagues.js'
 
 export default {
     name: 'ListLeagues',
@@ -87,7 +87,7 @@ a {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 30px;
 
-    max-width: 1000px;
+    max-width: 1200px;
 
 }
 

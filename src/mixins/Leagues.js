@@ -1,11 +1,10 @@
 import { api } from '@/services'
 
 export default {
-
     data() {
         return {
             leagues: null,
-            click: false
+            totalLeagues: 0,
         }
     },
 
@@ -16,6 +15,5 @@ export default {
                 this.leagues = r.data.data;
             })
         }
-    }
-
+    },
 }

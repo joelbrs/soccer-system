@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1>Consultor de Ligas Futebolísticas</h1>
+    <h1>Consultor de Ligas Futebolísticas ⚽</h1>
     <div class="container">
       <ListLeagues/>
     </div>
@@ -16,7 +16,7 @@ export default {
 
     components: {
       ListLeagues,
-      TableLeague
+      TableLeague,
     }
 }
 </script>
