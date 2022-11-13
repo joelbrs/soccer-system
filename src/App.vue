@@ -1,42 +1,36 @@
 <template>
   <div id="app">
-    <main>
-      <router-view></router-view>
-    </main>
+    <Header></Header>
+    <router-view class="container"></router-view>
   </div>
 </template>
 
 <script>
 import Home from '@/views/Home.vue'
+import Header from '@/components/home/Header.vue'
 
 export default {
   name: 'App',
 
   components: {
+    Header,
     Home,
   }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Noto Serif', Helvetica, Arial;
   color: #2c3e50;
+
+  margin: 0px;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+h1 {
+  text-align: center;
 }
 
 img {
@@ -44,4 +38,12 @@ img {
 
   width: 70px;
 }
+
+.container {
+  max-width: 800px;
+
+  margin: 0 auto;
+  padding: 20px
+}
+
 </style>
