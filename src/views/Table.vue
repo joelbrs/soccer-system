@@ -30,7 +30,6 @@
                     <tr v-for="(standing, index) in leagueStandings" :key="standing.id">
                         <td class="rows team-name info" :class="(index < 4) ? 'g4' : '' || (leagueStandings[index + 4] == null) ? 'z4' : 'middle'">
                             <p>{{(index + 1)}}</p>
-                            <img class="team-logo" :src="standing.team.logos[0].href" alt="logo"/>
                             <strong>{{standing.team.displayName}}</strong>
                         </td>       
                         <td class="stats-points">{{standing.stats[2].value}}</td>
@@ -39,7 +38,7 @@
                         <td class="stats-draws">{{standing.stats[5].value}}</td>
                         <td class="stats-losses">{{standing.stats[1].value}}</td>
                         <td class="stats-goals-for">{{standing.stats[4].value}}</td>
-                        <td class="stats-goals-agains">{{standing.stats[5].value}}</td>
+                        <td class="stats-goals-agains">{{standing.stats[3].value}}</td>
                         <td class="stats-point-diff">{{standing.stats[8].value}}</td>
                     </tr>
                 </tbody>
@@ -72,15 +71,12 @@ export default {
     box-sizing: border-box;
 }
 
-h1 {
+h1, img {
     animation: fadeIn .4s forwards
 }
 
 table {
-    border-collapse: collapse;
-
     font-size: 0.95rem;
-    text-align: center;
     
     min-width: 853px;
 
@@ -103,10 +99,11 @@ th {
 
     font-size: 0.8em;
     color: #999;
+
 }
 
 td {
-    padding: 10px;
+    padding: 13.5px;
 }
 
 td:nth-child(2){
@@ -145,6 +142,8 @@ td:nth-child(8){
 }
 .classification {
     text-align: left;
+
+    border-right: 1px solid lightgray;
 }
 .info {
     display: flex;
@@ -152,26 +151,15 @@ td:nth-child(8){
     gap: 10px;
 }
 
-.ranking {
-    padding-left: 0;
-}
-
-.team-logo {
-    width: 25px;
-}
 .team-name {
-    text-align: left;
-    font-weight: normal;
     font-size: 1rem;
-    letter-spacing: -1px;
 
     max-width: 100%;
+
+    border-right: 1px solid lightgray;
 }
-.stats-points {
-    font-weight: bold;
-}
-.g4 p{
-    color: aqua;
+.g4 p {
+    color: blue;
 }
 .middle p {
     color: gray;

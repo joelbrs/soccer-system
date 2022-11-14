@@ -1,12 +1,12 @@
 <template>
     <div class="leagues-container">
         <div class="leagues" v-for="league in leagues" :key="league.id">
-                <h3 class="title">{{league.name}}</h3>
+                <h3 class="title" title="Nome da Liga">{{league.name}}</h3>
                 <p class="abbr">{{league.abbr}}</p>
-                <img :src="league.logos.light" :alt="league.slug">
+                <img :src="league.logos.light" :alt="league.slug" title="Logo da Liga">
                 
                 <router-link :to='`/table/${league.id}`'>
-                    <button class="select-league" :id="league.id">Tabela</button>
+                    <button class="select-league" :id="league.id" title="Ir para a Tabela">Tabela</button>
                 </router-link>
             <br>
         </div>

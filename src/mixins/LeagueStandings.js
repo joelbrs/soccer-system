@@ -22,8 +22,6 @@ export default {
             .then(r => {
                 this.leagueInfos = r.data.data;
             })
-
         }
-        
     }
 }
