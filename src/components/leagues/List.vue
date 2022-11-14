@@ -1,14 +1,13 @@
 <template>
     <div class="leagues-container">
         <div class="leagues" v-for="league in leagues" :key="league.id">
-                <h3 class="title" title="Nome da Liga">{{league.name}}</h3>
-                <p class="abbr">{{league.abbr}}</p>
-                <img :src="league.logos.light" :alt="league.slug" title="Logo da Liga">
-                
-                <router-link :to='`/table/${league.id}`'>
-                    <button class="select-league" :id="league.id" title="Ir para a Tabela">Tabela</button>
-                </router-link>
-            <br>
+            <h3 class="league-name" title="Nome da Liga">{{league.name}}</h3>
+            <p class="league-abbr" >{{league.abbr}}</p>
+            <img class="league-logo" :src="league.logos.light" :alt="league.slug" title="Logo da Liga">
+
+            <router-link :to="`/tabela/${league.id}`">
+                <button class="select-league">Tabela</button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -28,6 +27,13 @@ export default {
 </script>
 
 <style scoped>
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
 h3, p, img, button {
     margin-bottom: 10px;
 }
@@ -76,13 +82,12 @@ a {
 
 .leagues-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
-    max-width: 1200px;
 
-    gap: 40px;
+    margin-right: -80px;
 }
-
 .leagues {
     animation: fadeIn .8s forwards;
 
@@ -100,10 +105,6 @@ a {
     box-shadow: 0 6px 12px rgba(30, 60, 90, 0.5);
 
     cursor: pointer;
-
-    transform: scale(1.1);
-
-    z-index: 1;
 }
 
 @keyframes fadeIn {

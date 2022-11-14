@@ -1,49 +1,51 @@
 <template>
     <div>
-        <div class="league-infos">
-            <router-link to="/">
-                <img :src="this.leagueDetails.logos.light" alt="logo" title="Clique para ir à Home"/>
-            </router-link>       
+        <main>
+            <div class="league-infos">
+                <router-link to="/">
+                    <img class="logo" :src="this.leagueDetails.logos.light" alt="logo" title="Clique para ir à Home"/>
+                </router-link>       
 
-            <router-link to="/">
-                <h1 title="Clique para ir à Home">{{this.leagueDetails.name}}</h1>
-            </router-link>
-        </div>
-       
-        <div class="container">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="top classification">CLASSIFICAÇÃO</th>
-                        <th class="top">P</th>
-                        <th class="top">J</th>
-                        <th class="top">V</th>
-                        <th class="top">E</th>
-                        <th class="top">D</th>
-                        <th class="top">GP</th>
-                        <th class="top">GC</th>
-                        <th class="top">SG</th>
-                    </tr>
-                </thead>
-                
-                <tbody> 
-                    <tr v-for="(standing, index) in leagueStandings" :key="standing.id">
-                        <td class="rows team-name info" :class="(index < 4) ? 'g4' : '' || (leagueStandings[index + 4] == null) ? 'z4' : 'middle'">
-                            <p>{{(index + 1)}}</p>
-                            <strong>{{standing.team.displayName}}</strong>
-                        </td>       
-                        <td class="stats-points">{{standing.stats[2].value}}</td>
-                        <td class="stats-games-played">{{standing.stats[0].value}}</td>
-                        <td class="stats-wins">{{standing.stats[6].value}}</td>
-                        <td class="stats-draws">{{standing.stats[5].value}}</td>
-                        <td class="stats-losses">{{standing.stats[1].value}}</td>
-                        <td class="stats-goals-for">{{standing.stats[4].value}}</td>
-                        <td class="stats-goals-agains">{{standing.stats[3].value}}</td>
-                        <td class="stats-point-diff">{{standing.stats[8].value}}</td>
-                    </tr>
-                </tbody>
-            </table>    
-        </div>
+                <router-link to="/">
+                    <h1 title="Clique para ir à Home">{{this.leagueDetails.name}}</h1>
+                </router-link>
+            </div>
+        
+            <div class="container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="top classification">CLASSIFICAÇÃO</th>
+                            <th class="top">P</th>
+                            <th class="top">J</th>
+                            <th class="top">V</th>
+                            <th class="top">E</th>
+                            <th class="top">D</th>
+                            <th class="top">GP</th>
+                            <th class="top">GC</th>
+                            <th class="top">SG</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody> 
+                        <tr v-for="(standing, index) in leagueStandings" :key="standing.id">
+                            <td class="rows team-name info" :class="(index < 4) ? 'g4' : '' || (leagueStandings[index + 4] == null) ? 'z4' : 'middle'">
+                                <p>{{(index + 1)}}</p>
+                                <strong>{{standing.team.displayName}}</strong>
+                            </td>       
+                            <td class="stats stats-points">{{standing.stats[2].value}}</td>
+                            <td class="stats stats-games-played">{{standing.stats[0].value}}</td>
+                            <td class="stats stats-wins">{{standing.stats[6].value}}</td>
+                            <td class="stats stats-draws">{{standing.stats[5].value}}</td>
+                            <td class="stats stats-losses">{{standing.stats[1].value}}</td>
+                            <td class="stats stats-goals-for">{{standing.stats[4].value}}</td>
+                            <td class="stats stats-goals-agains">{{standing.stats[3].value}}</td>
+                            <td class="stats stats-point-diff">{{standing.stats[8].value}}</td>
+                        </tr>
+                    </tbody>
+                </table>    
+            </div>
+        </main>
     </div>
 </template>
   
@@ -78,7 +80,7 @@ h1, img {
 table {
     font-size: 0.95rem;
     
-    min-width: 853px;
+    min-width: 850px;
 
     animation: fadeIn .4s forwards;
 }
@@ -134,6 +136,8 @@ td:nth-child(8){
     max-width: 1000px;
 
     margin: 30px auto 0 auto;
+
+    overflow-x: auto;
 }
 .top {
     font-size: .7rem;
@@ -179,4 +183,12 @@ td:nth-child(8){
         transform: translate3d(15px, 0, 0);
     }
 }
+
+@media (max-width: 660px) {
+    .logo {
+        display: none;
+    }
+
+}
+
 </style>

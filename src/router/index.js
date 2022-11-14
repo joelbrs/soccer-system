@@ -17,7 +17,7 @@ export default new VueRouter({
     },
 
     {
-      path: '/table/:league',
+      path: '/tabela/:league',
       name: 'table',
       component: TableLeague,
     },

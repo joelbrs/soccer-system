@@ -9,14 +9,12 @@
 
 <script>
 import ListLeagues from '@/components/leagues/List.vue'
-import TableLeague from '@/views/Table.vue'
 
 export default {
     name: 'Home',
 
     components: {
       ListLeagues,
-      TableLeague,
     }
 }
 </script>
