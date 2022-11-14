@@ -1,5 +1,15 @@
 <template>
     <div>
+        <div class="league-infos">
+            <router-link to="/">
+                <img :src="this.leagueDetails.logos.light" alt="logo" title="Clique para ir à Home"/>
+            </router-link>       
+
+            <router-link to="/">
+                <h1 title="Clique para ir à Home">{{this.leagueDetails.name}}</h1>
+            </router-link>
+        </div>
+       
         <div class="container">
             <table>
                 <thead>
@@ -23,13 +33,13 @@
                             <img class="team-logo" :src="standing.team.logos[0].href" alt="logo"/>
                             <strong>{{standing.team.displayName}}</strong>
                         </td>       
-                        <td class="rows stats-points">{{standing.stats[2].value}}</td>
-                        <td class="rows stats-games-played">{{standing.stats[0].value}}</td>
-                        <td class="rows stats-wins">{{standing.stats[6].value}}</td>
-                        <td class="rows stats-draws">{{standing.stats[5].value}}</td>
-                        <td class="rows stats-losses">{{standing.stats[1].value}}</td>
-                        <td class="rows stats-goals-for">{{standing.stats[4].value}}</td>
-                        <td class="rows stats-goals-agains">{{standing.stats[5].value}}</td>
+                        <td class="stats-points">{{standing.stats[2].value}}</td>
+                        <td class="stats-games-played">{{standing.stats[0].value}}</td>
+                        <td class="stats-wins">{{standing.stats[6].value}}</td>
+                        <td class="stats-draws">{{standing.stats[5].value}}</td>
+                        <td class="stats-losses">{{standing.stats[1].value}}</td>
+                        <td class="stats-goals-for">{{standing.stats[4].value}}</td>
+                        <td class="stats-goals-agains">{{standing.stats[5].value}}</td>
                         <td class="stats-point-diff">{{standing.stats[8].value}}</td>
                     </tr>
                 </tbody>
@@ -40,14 +50,16 @@
   
 <script>
 import LeagueStandings from '@/mixins/LeagueStandings'
+import LeagueDetails from '@/mixins/LeaguesDetails'
 
 export default {
       name: 'TableLeague',
 
-      mixins: [LeagueStandings],
+      mixins: [LeagueStandings, LeagueDetails],
  
       created() {
-        this.getStats(this.$route.params.league)
+        this.getStats(this.$route.params.league),
+        this.getLeagueDetails(this.$route.params.league)
       }
 }
 </script>
@@ -56,9 +68,12 @@ export default {
   
 * {
     font-family: sans-serif, Helvetica;
-    
-    margin: 0px;
-    padding: 0px;
+
+    box-sizing: border-box;
+}
+
+h1 {
+    animation: fadeIn .4s forwards
 }
 
 table {
@@ -69,11 +84,11 @@ table {
     
     min-width: 853px;
 
-    animation: fadeIn .8s forwards;
+    animation: fadeIn .4s forwards;
 }
 
 th, td {
-    border: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
 
     border-left: none;
     border-right: none;
@@ -84,6 +99,8 @@ th, td {
 }
 
 th {
+    border-top: 1px solid lightgray;
+
     font-size: 0.8em;
     color: #999;
 }
@@ -107,9 +124,15 @@ td:nth-child(6){
 td:nth-child(8){
     background-color: #f5f5f5;
 }
+.league-infos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     display: block;
-    align-content: center;
 
     max-width: 1000px;
 
@@ -147,17 +170,14 @@ td:nth-child(8){
 .stats-points {
     font-weight: bold;
 }
-
 .g4 p{
     color: aqua;
 }
-
-.z4 p {
-    color: red;
-}
-
 .middle p {
     color: gray;
+}
+.z4 p {
+    color: red;
 }
 
 @keyframes fadeIn {

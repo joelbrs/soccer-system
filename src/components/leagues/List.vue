@@ -1,5 +1,5 @@
 <template>
-    <section class="leagues-container">
+    <div class="leagues-container">
         <div class="leagues" v-for="league in leagues" :key="league.id">
                 <h3 class="title">{{league.name}}</h3>
                 <p class="abbr">{{league.abbr}}</p>
@@ -10,7 +10,7 @@
                 </router-link>
             <br>
         </div>
-    </section>
+    </div>
 </template>
 
 <script>
@@ -28,7 +28,6 @@ export default {
 </script>
 
 <style scoped>
-
 h3, p, img, button {
     margin-bottom: 10px;
 }
@@ -78,10 +77,10 @@ a {
 .leagues-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px;
 
     max-width: 1200px;
-    margin: 0 auto;
+
+    gap: 40px;
 }
 
 .leagues {
@@ -93,7 +92,6 @@ a {
     width: 380px;
     max-width: 1000px;
     height: 215px;
-    
 }
 
 .leagues:hover {
