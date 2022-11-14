@@ -2,7 +2,7 @@
   <header>
     <nav>
       <div class="logo">
-        <router-link to="/"><img src="@/assets/logo.png" alt=""></router-link>
+        <router-link to="/"><img src="@/assets/logo.svg" alt=""></router-link>
       </div>
     </nav>
   </header>
@@ -15,7 +15,6 @@ export default {
 </script>
 
 <style scoped>
-
 nav {
   display: flex;
   align-items: center;
@@ -26,10 +25,11 @@ nav {
   box-shadow: 0 2px 4px rgba(30, 60, 90, 0.1);
 
   animation: fadeIn .3s forwards;
+
 }
 
 .logo {
-  max-width: 30px;
+  max-width: 200px;
 }
 
 @keyframes fadeIn {

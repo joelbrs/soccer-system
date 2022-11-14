@@ -1,7 +1,6 @@
 <template>
     <section class="leagues-container">
         <div class="leagues" v-for="league in leagues" :key="league.id">
-            <div class="league">
                 <h3 class="title">{{league.name}}</h3>
                 <p class="abbr">{{league.abbr}}</p>
                 <img :src="league.logos.light" :alt="league.slug">
@@ -9,8 +8,7 @@
                 <router-link :to='`/table/${league.id}`'>
                     <button class="select-league" :id="league.id">Tabela</button>
                 </router-link>
-                <br>
-            </div>
+            <br>
         </div>
     </section>
 </template>
@@ -62,11 +60,10 @@ button {
     cursor: pointer;
 
     font-size: 1rem;
-    font-family: 'Noto serif', serif;
     color: white;
     font-weight: bold;
     
-    padding: 8px 45px;
+    padding: 6.5px 45px;
     margin-top: 8px;
 }
 
@@ -84,7 +81,7 @@ a {
     grid-gap: 50px;
 
     max-width: 1200px;
-
+    margin: 0 auto;
 }
 
 .leagues {
@@ -93,10 +90,10 @@ a {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(30, 60, 90, 0.2);
     
-    padding: 10px;
     width: 380px;
     max-width: 1000px;
     height: 215px;
+    
 }
 
 .leagues:hover {
@@ -105,6 +102,8 @@ a {
     box-shadow: 0 6px 12px rgba(30, 60, 90, 0.5);
 
     cursor: pointer;
+
+    transform: scale(1.1);
 
     z-index: 1;
 }

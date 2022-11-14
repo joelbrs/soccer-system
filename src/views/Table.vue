@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <div class="container">
             <table>
                 <thead>
@@ -19,10 +18,11 @@
                 
                 <tbody> 
                     <tr v-for="(standing, index) in leagueStandings" :key="standing.id">
-                        <div>
-                            <td class="ranking" :class="(index < 4) ? 'g4' : '' || (leagueStandings[index + 4] == null) ? 'z4' : 'middle'">{{(index + 1)}}</td>
-                            <td class="rows team-name"><strong>{{standing.team.displayName}}</strong></td>
-                        </div>         
+                        <td class="rows team-name info" :class="(index < 4) ? 'g4' : '' || (leagueStandings[index + 4] == null) ? 'z4' : 'middle'">
+                            <p>{{(index + 1)}}</p>
+                            <img class="team-logo" :src="standing.team.logos[0].href" alt="logo"/>
+                            <strong>{{standing.team.displayName}}</strong>
+                        </td>       
                         <td class="rows stats-points">{{standing.stats[2].value}}</td>
                         <td class="rows stats-games-played">{{standing.stats[0].value}}</td>
                         <td class="rows stats-wins">{{standing.stats[6].value}}</td>
@@ -31,8 +31,6 @@
                         <td class="rows stats-goals-for">{{standing.stats[4].value}}</td>
                         <td class="rows stats-goals-agains">{{standing.stats[5].value}}</td>
                         <td class="stats-point-diff">{{standing.stats[8].value}}</td>
-                        
-                        {{standing.length}}
                     </tr>
                 </tbody>
             </table>    
@@ -47,26 +45,6 @@ export default {
       name: 'TableLeague',
 
       mixins: [LeagueStandings],
-
-      data() {
-        return {
-            aux: ''
-        }
-      },
-
-      methods: {
-        find(index) {
-            if (index < 4) {
-                this.aux = 'g4'
-            }
-
-            if (index + 4 == undefined) {
-               this. aux = 'z4'
-            } 
-
-            console.log("VASCO")
-        }
-      },
  
       created() {
         this.getStats(this.$route.params.league)
@@ -77,7 +55,7 @@ export default {
 <style scoped>
   
 * {
-    font-family: opensans, Helvetica;
+    font-family: sans-serif, Helvetica;
     
     margin: 0px;
     padding: 0px;
@@ -88,8 +66,6 @@ table {
 
     font-size: 0.95rem;
     text-align: center;
-    
-    margin-left: 50px;
     
     min-width: 853px;
 
@@ -113,26 +89,26 @@ th {
 }
 
 td {
-    padding: 15px;
+    padding: 10px;
 }
 
-td:nth-child(3){
+td:nth-child(2){
     background-color: #f5f5f5;
 }
 
-td:nth-child(5){
+td:nth-child(4){
     background-color: #f5f5f5;
 }
 
-td:nth-child(7){
+td:nth-child(6){
     background-color: #f5f5f5;
 }
 
-td:nth-child(9){
+td:nth-child(8){
     background-color: #f5f5f5;
 }
 .container {
-    display: flex;
+    display: block;
     align-content: center;
 
     max-width: 1000px;
@@ -147,34 +123,40 @@ td:nth-child(9){
 .classification {
     text-align: left;
 }
+.info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .ranking {
     padding-left: 0;
 }
-.team-name {
 
+.team-logo {
+    width: 25px;
+}
+.team-name {
     text-align: left;
     font-weight: normal;
     font-size: 1rem;
     letter-spacing: -1px;
 
-    width: 100%;
-
-    padding-left: 0px;
-    margin-right: 70px;
+    max-width: 100%;
 }
 .stats-points {
     font-weight: bold;
 }
 
-.g4 {
-    color: blue;
+.g4 p{
+    color: aqua;
 }
 
-.z4 {
+.z4 p {
     color: red;
 }
 
-.middle {
+.middle p {
     color: gray;
 }
 
