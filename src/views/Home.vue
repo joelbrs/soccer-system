@@ -24,7 +24,7 @@ export default {
 h1 {
   animation: fadeIn .8s forwards;
 
-  margin: 30px 0 45px 0;
+  margin: 30px 0 45px 55px;
 }
 
 @keyframes fadeIn {

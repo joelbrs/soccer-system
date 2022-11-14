@@ -97,6 +97,7 @@ a {
     width: 380px;
     max-width: 1000px;
     height: 215px;
+    margin-bottom: 20px
 }
 
 .leagues:hover {
